@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public static LevelManager main;
 
     public Transform startPoint;
     public Transform[] path;
+
+    public int currency;
+
     private void Awake()
     {
         main = this;
+    }
+
+    private void Start() 
+    {
+        currency = 100;
+    }
+
+    public void IncreaseCurrency(int amount) 
+    {
+        currency += amount;
+    }
+
+    public bool SpendCurrency(int amount)
+    {
+        if (amount <= currency) {
+            //BUY ITEM
+            currency -= amount;
+            return true;
+        } else{
+            Debug.Log ("You dont got the bread for that brother");
+            return false;
+        }
     }
 }
