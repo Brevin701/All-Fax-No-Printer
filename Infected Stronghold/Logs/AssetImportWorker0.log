@@ -2547,3 +2547,133 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16f98b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.435 seconds
+Refreshing native plugins compatible for Editor in 1.09 ms, found 3 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.391 seconds
+Domain Reload Profiling: 1826ms
+	BeginReloadAssembly (114ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (20ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (271ms)
+		LoadAssemblies (260ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (44ms)
+			TypeCache.Refresh (32ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1391ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (361ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (58ms)
+			ProcessInitializeOnLoadAttributes (262ms)
+			ProcessInitializeOnLoadMethodAttributes (34ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Refreshing native plugins compatible for Editor in 1.25 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5544 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 59 unused Assets / (0.9 MB). Loaded Objects now: 6405.
+Memory consumption went from 458.5 MB to 457.6 MB.
+Total: 3.705000 ms (FindLiveObjects: 0.233791 ms CreateObjectMapping: 0.072084 ms MarkObjects: 3.047291 ms  DeleteObjects: 0.351000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2336.580354 seconds.
+  path: Assets/New Animation.anim
+  artifactKey: Guid(3f4414fb7c4d24e45a13524c652a6733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Animation.anim using Guid(3f4414fb7c4d24e45a13524c652a6733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a29f10cd84bc9fd1733d365567f2d6e') in 0.288512 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1142.771048 seconds.
+  path: Assets/Animation.anim
+  artifactKey: Guid(1a975baf449634603a3ff04be07ef14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation.anim using Guid(1a975baf449634603a3ff04be07ef14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba90d6461d288b52406baf806a5f1aa9') in 0.014262 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 29.803779 seconds.
+  path: Assets/Art
+  artifactKey: Guid(1645bbafc83b38a43b494d4b88dfbd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art using Guid(1645bbafc83b38a43b494d4b88dfbd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a0657a4db42f648c79e1202c831ac3e') in 0.002288 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.750767 seconds.
+  path: Assets
+  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a4fe85251aa2e89732c359432baa2c3') in 0.001579 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 13.192937 seconds.
+  path: Assets/MenuOpen.anim
+  artifactKey: Guid(1a975baf449634603a3ff04be07ef14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MenuOpen.anim using Guid(1a975baf449634603a3ff04be07ef14e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba9d54546d631b04a27e426110e3d5c1') in 0.004072 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 420.527788 seconds.
+  path: Assets/MenuClose.anim
+  artifactKey: Guid(fa236b2f852cd44c68751774238eb961) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MenuClose.anim using Guid(fa236b2f852cd44c68751774238eb961) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87a19d3d88f96009137ebbe4d1951845') in 0.006788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.241001 seconds.
+  path: Assets/Menu.cs
+  artifactKey: Guid(d5094f17e71b142bb98946c8b19f6eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Menu.cs using Guid(d5094f17e71b142bb98946c8b19f6eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6a94053bd4e0d00ea6fd07b8b8c0ed4') in 0.001786 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 284.883337 seconds.
+  path: Assets/New Animator Controller.controller
+  artifactKey: Guid(a6b2dc62d63c1474788df134a354ecb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Animator Controller.controller using Guid(a6b2dc62d63c1474788df134a354ecb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '368caa175932d7be099cb1c347dabfd2') in 0.018685 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
