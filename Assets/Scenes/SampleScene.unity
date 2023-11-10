@@ -2493,6 +2493,7 @@ GameObject:
   - component: {fileID: 291640246}
   - component: {fileID: 291640248}
   - component: {fileID: 291640249}
+  - component: {fileID: 291640250}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -2564,6 +2565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8821809121322597282, guid: 3fa5dcff1f855dd49a0cddac6171d49d, type: 3}
+  - {fileID: 8821809121322597282, guid: 3fa5dcff1f855dd49a0cddac6171d49d, type: 3}
+  - {fileID: 8821809121322597282, guid: 453eb3e15d313d444847217c79f12db8, type: 3}
   - {fileID: 8821809121322597282, guid: 453eb3e15d313d444847217c79f12db8, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
@@ -2592,6 +2595,18 @@ MonoBehaviour:
   - name: Sniper
     cost: 150
     prefab: {fileID: 7477469196081240158, guid: 3e3e5c237bbad4142a9b9c17d2ea3c50, type: 3}
+--- !u!114 &291640250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291640245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82530e2746e059439d8ff48a7d2401c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &291695577
 PrefabInstance:
   m_ObjectHideFlags: 0
