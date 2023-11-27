@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     private int pathIndex = 0;
 
     private float baseSpeed;
+
+    public int damage = 10;
     // Start is called before the first frame update
     private void Start()
     {
@@ -33,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
             if (pathIndex == LevelManager.main.path.Length)
             {
                 EnermySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
+                EndPath();
                 return;
             }
             else
@@ -57,5 +59,11 @@ public class EnemyMovement : MonoBehaviour
     public void ResetSpeed()
     {
         moveSpeed = baseSpeed;
+    }
+
+    void EndPath()
+    {
+        UserHealth.health -= damage;
+        Destroy(gameObject);
     }
 }
