@@ -50,7 +50,7 @@ public class Turret : MonoBehaviour
         
         RotateTowardsTarget();
 
-        if (!CheckTargetIsInRange())
+        if (!CheckTargetIsInRange() || target.position.x > 8.5)
         {
             target = null;
         }
@@ -91,11 +91,15 @@ public class Turret : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
+        if (target.position.x <= 8.5)
+        {
+            float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, 
-        targetRotation, rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+            turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, 
+            targetRotation, rotationSpeed * Time.deltaTime);
+        }
+        
 
     }
 
