@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnermySpawner : MonoBehaviour
 {
@@ -15,16 +17,19 @@ public class EnermySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesperSecondCap = 15f;
+    [SerializeField] private TMP_Text waveCounter;
+
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 1;
+    public int currentWave = 1;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private float eps;
     private bool isSpawning = false;
+    
 
     private void Awake()
     {
@@ -34,7 +39,6 @@ public class EnermySpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartWave());
-
     }
     private void Update()
     {
@@ -73,6 +77,7 @@ public class EnermySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
+        UpdateWaveCounter(currentWave);
         StartCoroutine(StartWave());
     }
     private void SpawnEnemy()
@@ -94,11 +99,20 @@ public class EnermySpawner : MonoBehaviour
   
     private int EnemiesPerWave() 
     {
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
+        int enemies = Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
+        UpdateWaveCounter(currentWave);
+        return enemies;
     }
     // Update is called once per frame
     private float EnemiesPerSecond() 
     {
         return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesperSecondCap);
     }
+
+    public void UpdateWaveCounter(int currentWave)
+    {
+        waveCounter.gameObject.SetActive(true);
+        waveCounter.text = "Wave: " + currentWave.ToString();
+    }
+
 }
