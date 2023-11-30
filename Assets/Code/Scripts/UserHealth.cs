@@ -12,6 +12,7 @@ public class UserHealth : MonoBehaviour
     public static int health;
     public int maxHealth = 100;
     public Slider slider;
+    public GameObject gameOver;
 
     private void Start()
     {
@@ -24,7 +25,8 @@ public class UserHealth : MonoBehaviour
         slider.value = health;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            gameOver.SetActive(true);
+            
         }
     }
 }

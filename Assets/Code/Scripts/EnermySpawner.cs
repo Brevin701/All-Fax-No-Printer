@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class EnermySpawner : MonoBehaviour
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesperSecondCap = 15f;
     [SerializeField] private TMP_Text waveCounter;
+    [SerializeField] private float maxWave = 2f;
 
 
     [Header("Events")]
@@ -29,8 +31,10 @@ public class EnermySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private float eps;
     private bool isSpawning = false;
-    
 
+    public GameObject levelComplete;
+    public GameObject gameOver;
+    public TextMeshProUGUI waveCountText;
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
@@ -66,7 +70,15 @@ public class EnermySpawner : MonoBehaviour
     }
     private IEnumerator StartWave()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
+        if (currentWave < maxWave)
+        {
+            yield return new WaitForSeconds(timeBetweenWaves);
+        }
+        else if (currentWave == maxWave) 
+        {
+            timeBetweenWaves = 0f;
+        }
+        
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
         eps = EnemiesPerSecond();
@@ -82,15 +94,27 @@ public class EnermySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        if (currentWave > 1)
+        if (currentWave <= maxWave)
         {
-            int index = Random.Range(0, enemyPrefabs.Length);
-            GameObject prefabToSpawn = enemyPrefabs[index];
-            Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+            
+            if (currentWave > 1)
+            {
+                int index = Random.Range(0, enemyPrefabs.Length);
+                GameObject prefabToSpawn = enemyPrefabs[index];
+                Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+            }
+            else if (currentWave == 1) 
+            {
+                GameObject prefabToSpawn = enemyPrefabs[0];
+                Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+            }
+            
+            
         }
-        else{
-            GameObject prefabToSpawn = enemyPrefabs[0];
-            Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+        else
+        {
+            levelComplete.SetActive(true);
+
         }
         
         
@@ -112,7 +136,18 @@ public class EnermySpawner : MonoBehaviour
     public void UpdateWaveCounter(int currentWave)
     {
         waveCounter.gameObject.SetActive(true);
-        waveCounter.text = "Wave: " + currentWave.ToString();
+        if (currentWave < maxWave) 
+        {
+            waveCounter.text = "Wave: " + currentWave.ToString();
+        }
+        else if(currentWave == maxWave)
+        {
+            waveCounter.text = "Wave: " + maxWave.ToString();
+        }
     }
 
+    public void GameOverWaves(int currentWave)
+    {
+        waveCountText.text = "Waves Survived: " + currentWave.ToString();
+    }
 }
