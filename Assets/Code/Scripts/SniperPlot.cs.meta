@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: b70a2fd09af387749adc0e4928573c6a
+guid: bdbbd10c9c6715a4eabeb6c8645dc3a3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - sr: {instanceID: 0}
-  - towerObj: {fileID: 5830319029011659952, guid: cbcaf21a3bc7b7f43a3ac2e5b4787c84, type: 3}
-  - turret: {fileID: 5007707442131587649, guid: cbcaf21a3bc7b7f43a3ac2e5b4787c84, type: 3}
+  - towerObj: {fileID: 7477469196081240158, guid: 3e3e5c237bbad4142a9b9c17d2ea3c50, type: 3}
+  - sniper: {fileID: 5823164986004889631, guid: 3e3e5c237bbad4142a9b9c17d2ea3c50, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

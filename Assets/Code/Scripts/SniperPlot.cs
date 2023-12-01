@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plot : MonoBehaviour
+public class SniperPlot : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
-    
+
     public GameObject towerObj;
-    public Turret turret;
+    public Sniper sniper;
     private Color startColor;
 
     private void Start()
@@ -31,7 +31,7 @@ public class Plot : MonoBehaviour
         if (UIManager.main.IsHoveringUI()) return;
         if (towerObj == null)
         {
-            
+
 
             Tower towerToBuild = BuildManager.main.GetSelectedTower();
 
@@ -44,11 +44,11 @@ public class Plot : MonoBehaviour
 
             LevelManager.main.SpendCurrency(towerToBuild.cost);
             towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-            turret = towerObj.GetComponent<Turret>();
+            sniper = towerObj.GetComponent<Sniper>();
         }
         else
         {
-            turret.OpenUpgradeUI();
+            sniper.OpenUpgradeUI();
             return;
         }
     }

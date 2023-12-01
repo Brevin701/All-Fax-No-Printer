@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnermySpawner : MonoBehaviour
@@ -33,7 +34,6 @@ public class EnermySpawner : MonoBehaviour
     private bool isSpawning = false;
 
     public GameObject levelComplete;
-    public GameObject gameOver;
     public TextMeshProUGUI waveCountText;
     private void Awake()
     {
@@ -144,10 +144,9 @@ public class EnermySpawner : MonoBehaviour
         {
             waveCounter.text = "Wave: " + maxWave.ToString();
         }
+        waveCountText.text = "Waves Survived: " + (currentWave - 1).ToString();
     }
+    
 
-    public void GameOverWaves(int currentWave)
-    {
-        waveCountText.text = "Waves Survived: " + currentWave.ToString();
-    }
+
 }

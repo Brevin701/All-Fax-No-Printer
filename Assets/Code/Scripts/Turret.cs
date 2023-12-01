@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
+using System.Dynamic;
+using TMPro;
 
 public class Turret : MonoBehaviour
 {
@@ -15,29 +18,34 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
-    
-    
+    [SerializeField] private TMP_Text upgradeAmount;
+    [SerializeField] private TMP_Text levelCounter;
+
+
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f;
     [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private int deletionCost;
+    [SerializeField] private float maxLevel = 5f;
+
 
     private float bpsBase;
     private float targetingRangeBase;
+    
     
     private Transform target;
     private float timeUntilFire;
 
     private int level = 1;
-
     private void Start()
     {
         bpsBase = bps;
         targetingRangeBase = targetingRange;
-
         upgradeButton.onClick.AddListener(Upgrade);
+        
     }
 
     private void Update()
@@ -106,6 +114,7 @@ public class Turret : MonoBehaviour
     public void OpenUpgradeUI()
     {
         upgradeUI.SetActive(true);
+        
     }
 
     public void CloseUpgradeUI()
@@ -126,19 +135,24 @@ public class Turret : MonoBehaviour
 
         targetingRange = CalculateRange();
 
+        UpgradeCostCounter(baseUpgradeCost);
+
+        LevelCounter(level);
+
         CloseUpgradeUI();
     }
 
     private int CalculateCost()
     {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+        int cost = Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+        return cost;
     }
-
+    
     private float CalculateBPS()
     {
         return bpsBase * Mathf.Pow(level, .6f);
     }
-        private float CalculateRange()
+    private float CalculateRange()
     {
         return targetingRangeBase * Mathf.Pow(level, .4f);
     }
@@ -148,7 +162,31 @@ public class Turret : MonoBehaviour
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+
+    public void UpgradeCostCounter(int baseUpgradeCost)
+    {
+        int upgradeCost = Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+        
+        upgradeAmount.text = "Upgrade: " + upgradeCost.ToString();
+        
+        
+
+    }
+
     
-    
-    
+
+    public void LevelCounter(int level)
+    {
+
+        if (level < maxLevel)
+        {
+            levelCounter.text = "Level: " + level.ToString();
+        }
+        else if(level == maxLevel)
+        {
+            levelCounter.text = "Max Level";
+            upgradeButton.interactable = false;
+        }
+        
+    }
 }
