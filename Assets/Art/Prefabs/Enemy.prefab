@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 2
-  currencyWorth: 1000
+  currencyWorth: 25
 --- !u!114 &-6879256058269818946
 MonoBehaviour:
   m_ObjectHideFlags: 0
