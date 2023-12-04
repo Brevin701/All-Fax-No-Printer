@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextLevel : MonoBehaviour
+public class PauseMainMenu : MonoBehaviour
 {
-    public int nextLevel;
+    public int gameMenuScreen;
 
-    public void AdvancingLevels()
+    public void PauseMainMenuButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(nextLevel); ;
+        SceneManager.LoadScene(gameMenuScreen);
     }
 }

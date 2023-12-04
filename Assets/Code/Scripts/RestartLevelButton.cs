@@ -10,6 +10,7 @@ public class RestartLevelButton : MonoBehaviour
 
     public void RestartTheGame()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
