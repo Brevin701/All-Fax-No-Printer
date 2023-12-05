@@ -2107,7 +2107,7 @@ MonoBehaviour:
   difficultyScalingFactor: 0.75
   enemiesperSecondCap: 15
   waveCounter: {fileID: 1578274618}
-  maxWave: 3
+  maxWave: 2
   currentWave: 1
   levelComplete: {fileID: 2079503717}
   waveCountText: {fileID: 512293373}
@@ -11970,7 +11970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave:      1 of 3'
+  m_text: 'Wave:      1 of 2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

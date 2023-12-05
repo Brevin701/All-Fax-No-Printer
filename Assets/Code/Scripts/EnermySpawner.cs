@@ -145,7 +145,7 @@ public class EnermySpawner : MonoBehaviour
         }
         else if(currentWave == maxWave)
         {
-            waveCounter.text = "Wave: " + maxWave.ToString() + "of" + maxWave.ToString();
+            waveCounter.text = "Wave: " + maxWave.ToString() + " of " + maxWave.ToString();
         }
         waveCountText.text = "Waves Survived: " + (currentWave - 1).ToString();
     }
