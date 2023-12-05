@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int pathIndex = 0;
-
+    public GameObject enemyPrefab;
     private float baseSpeed;
 
     public int damage = 10;
@@ -30,8 +32,7 @@ public class EnemyMovement : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
             pathIndex++;
-
-
+            
             if (pathIndex == LevelManager.main.path.Length)
             {
                 EnermySpawner.onEnemyDestroy.Invoke();
@@ -42,6 +43,17 @@ public class EnemyMovement : MonoBehaviour
             {
                 target = LevelManager.main.path[pathIndex];
             }
+        }
+        
+        if (pathIndex > 5)
+        {
+            Debug.Log("X-value increased, flipping enemy!");
+            transform.localScale = new Vector2(.1f, .1f);
+        }
+        else if (pathIndex <= 5)
+        {
+            Debug.Log("X-value decreased, flipping enemy!");
+            transform.localScale = new Vector2(-.1f, .1f);
         }
     }
     private void FixedUpdate()

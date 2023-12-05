@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6814468409419261940}
   moveSpeed: 1.25
+  enemyPrefab: {fileID: 0}
   damage: 10
 --- !u!114 &8580730303067292354
 MonoBehaviour:

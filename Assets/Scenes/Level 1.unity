@@ -2909,9 +2909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8821809121322597282, guid: 3fa5dcff1f855dd49a0cddac6171d49d, type: 3}
-  - {fileID: 8821809121322597282, guid: 3fa5dcff1f855dd49a0cddac6171d49d, type: 3}
   - {fileID: 8821809121322597282, guid: 453eb3e15d313d444847217c79f12db8, type: 3}
-  baseEnemies: 8
+  baseEnemies: 1
   enemiesPerSecond: 1
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
@@ -4675,7 +4674,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1145, y: -600}
-  m_SizeDelta: {x: 75, y: 75}
+  m_SizeDelta: {x: 150, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462327321
 MonoBehaviour:
@@ -4723,7 +4722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462327324}
         m_TargetAssemblyTypeName: FastForward, Assembly-CSharp
-        m_MethodName: GameSpeed
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4783,6 +4782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec61b234ca271834b9d4beaf81ac461b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastForward: {fileID: 961438941}
 --- !u!1 &462910686
 GameObject:
   m_ObjectHideFlags: 0

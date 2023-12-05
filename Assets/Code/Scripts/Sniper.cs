@@ -169,9 +169,6 @@ public class Sniper : MonoBehaviour
         int upgradeCost = Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
 
         upgradeAmount.text = "Upgrade: " + upgradeCost.ToString();
-
-
-
     }
 
 
