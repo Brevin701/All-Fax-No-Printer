@@ -6,7 +6,7 @@ using UnityEngine;
 public class FastForward : MonoBehaviour
 {
     private int pressCount = 0;
-    private TMP_Text fastForward;
+    [SerializeField] private TMP_Text fastForward;
 
     public void OnClick()
     {
@@ -15,19 +15,22 @@ public class FastForward : MonoBehaviour
         if (pressCount == 1)
         {
             Time.timeScale = 2.0f;
-            fastForward.text = (pressCount + "x").ToString();
+            fastForward.text = (Time.timeScale + "x").ToString();
         }
         else if (pressCount == 2)
         {
             Time.timeScale = 3.0f;
+            fastForward.text = "3x";
+        }
+        else if (pressCount == 3)
+        {
+            Time.timeScale = 5.0f;
+            fastForward.text = "5x";
         }
         else if (pressCount == 4)
         {
-            Time.timeScale = 5.0f;
-        }
-        else if (pressCount == 5)
-        {
             Time.timeScale = 1.0f;
+            fastForward.text = "1x";
             pressCount = 0; // Reset counter after reaching 2 presses
         }
     }

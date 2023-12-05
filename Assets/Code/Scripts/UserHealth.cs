@@ -25,6 +25,7 @@ public class UserHealth : MonoBehaviour
         slider.value = health;
         if (health <= 0)
         {
+            Time.timeScale = 0f;
             gameOver.SetActive(true);
             
         }

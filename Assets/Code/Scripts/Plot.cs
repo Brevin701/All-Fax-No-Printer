@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Plot : MonoBehaviour
@@ -28,28 +29,23 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (UIManager.main.IsHoveringUI()) return;
-        if (towerObj == null)
-        {
-            
-
-            Tower towerToBuild = BuildManager.main.GetSelectedTower();
-
-
-            if (towerToBuild.cost > LevelManager.main.currency)
-            {
-                Debug.Log("OOPS");
-                return;
-            }
-
-            LevelManager.main.SpendCurrency(towerToBuild.cost);
-            towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-            turret = towerObj.GetComponent<Turret>();
-        }
-        else
-        {
+       if (towerObj != null)
+       {
             turret.OpenUpgradeUI();
             return;
+       }
+
+        Tower towerToBuild = BuildManager.main.GetSelectedTower();
+
+        if (towerToBuild.cost > LevelManager.main.currency)
+        {
+            Debug.Log("You can't afford this tower");
+            return;
         }
+        
+        LevelManager.main.SpendCurrency(towerToBuild.cost);
+
+        towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        turret = towerObj.GetComponent<Turret>();
     }
 }

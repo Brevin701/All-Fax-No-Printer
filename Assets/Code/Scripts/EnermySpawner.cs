@@ -35,6 +35,8 @@ public class EnermySpawner : MonoBehaviour
 
     public GameObject levelComplete;
     public TextMeshProUGUI waveCountText;
+
+    
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
@@ -42,6 +44,7 @@ public class EnermySpawner : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(StartWave());
     }
     private void Update()

@@ -2,8 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
+using UnityEditor;
+using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
+using System.Dynamic;
+using TMPro;
+
 
 public class Sniper : MonoBehaviour
 {
@@ -14,30 +19,34 @@ public class Sniper : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private TMP_Text upgradeAmount;
+    [SerializeField] private TMP_Text levelCounter;
 
 
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float bps = 1f;
-    [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private float bps = .4f;
+    [SerializeField] private int baseUpgradeCost = 150;
     [SerializeField] private int deletionCost;
+    [SerializeField] private float maxLevel = 5f;
+
 
     private float bpsBase;
     private float targetingRangeBase;
+
 
     private Transform target;
     private float timeUntilFire;
 
     private int level = 1;
-
     private void Start()
     {
         bpsBase = bps;
         targetingRangeBase = targetingRange;
-
         upgradeButton.onClick.AddListener(Upgrade);
+
     }
 
     private void Update()
@@ -50,7 +59,7 @@ public class Sniper : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if (!CheckTargetIsInRange())
+        if (!CheckTargetIsInRange() || target.position.x > 8.5)
         {
             target = null;
         }
@@ -91,16 +100,22 @@ public class Sniper : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
+        if (target.position.x <= 8.5)
+        {
+            float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+            turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
             targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
 
     }
+
     public void OpenUpgradeUI()
     {
         upgradeUI.SetActive(true);
+
     }
 
     public void CloseUpgradeUI()
@@ -121,14 +136,17 @@ public class Sniper : MonoBehaviour
 
         targetingRange = CalculateRange();
 
+        UpgradeCostCounter(baseUpgradeCost);
+
+        LevelCounter(level);
+
         CloseUpgradeUI();
     }
 
-    
-
     private int CalculateCost()
     {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+        int cost = Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+        return cost;
     }
 
     private float CalculateBPS()
@@ -139,10 +157,38 @@ public class Sniper : MonoBehaviour
     {
         return targetingRangeBase * Mathf.Pow(level, .4f);
     }
+
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+    }
+
+    public void UpgradeCostCounter(int baseUpgradeCost)
+    {
+        int upgradeCost = Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+
+        upgradeAmount.text = "Upgrade: " + upgradeCost.ToString();
+
+
+
+    }
+
+
+
+    public void LevelCounter(int level)
+    {
+
+        if (level < maxLevel)
+        {
+            levelCounter.text = "Level: " + level.ToString();
+        }
+        else if (level == maxLevel)
+        {
+            levelCounter.text = "Max Level";
+            upgradeButton.interactable = false;
+        }
+
     }
 
 

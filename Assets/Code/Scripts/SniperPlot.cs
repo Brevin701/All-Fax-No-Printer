@@ -28,28 +28,23 @@ public class SniperPlot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (UIManager.main.IsHoveringUI()) return;
-        if (towerObj == null)
-        {
-
-
-            Tower towerToBuild = BuildManager.main.GetSelectedTower();
-
-
-            if (towerToBuild.cost > LevelManager.main.currency)
-            {
-                Debug.Log("OOPS");
-                return;
-            }
-
-            LevelManager.main.SpendCurrency(towerToBuild.cost);
-            towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-            sniper = towerObj.GetComponent<Sniper>();
-        }
-        else
+        if (towerObj != null)
         {
             sniper.OpenUpgradeUI();
             return;
         }
+
+        Tower towerToBuild = BuildManager.main.GetSelectedTower();
+
+        if (towerToBuild.cost > LevelManager.main.currency)
+        {
+            Debug.Log("You can't afford this tower");
+            return;
+        }
+
+        LevelManager.main.SpendCurrency(towerToBuild.cost);
+
+        towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        sniper = towerObj.GetComponent<Sniper>();
     }
 }
