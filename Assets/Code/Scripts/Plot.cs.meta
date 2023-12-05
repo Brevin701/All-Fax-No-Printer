@@ -5,8 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - sr: {instanceID: 0}
-  - towerObj: {fileID: 5830319029011659952, guid: cbcaf21a3bc7b7f43a3ac2e5b4787c84, type: 3}
-  - turret: {fileID: 5007707442131587649, guid: cbcaf21a3bc7b7f43a3ac2e5b4787c84, type: 3}
+  - towerObj: {instanceID: 0}
+  - turret: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

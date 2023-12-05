@@ -167,7 +167,7 @@ MonoBehaviour:
   rb: {fileID: 6814468409419261940}
   moveSpeed: 2
   enemyPrefab: {fileID: 8821809121322597282}
-  damage: 50
+  damage: 10
 --- !u!114 &8580730303067292354
 MonoBehaviour:
   m_ObjectHideFlags: 0

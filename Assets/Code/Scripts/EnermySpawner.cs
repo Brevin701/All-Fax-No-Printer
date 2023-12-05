@@ -20,7 +20,7 @@ public class EnermySpawner : MonoBehaviour
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesperSecondCap = 15f;
     [SerializeField] private TMP_Text waveCounter;
-    [SerializeField] private float maxWave = 2f;
+    [SerializeField] private float maxWave = 3f;
 
 
     [Header("Events")]
@@ -141,11 +141,11 @@ public class EnermySpawner : MonoBehaviour
         waveCounter.gameObject.SetActive(true);
         if (currentWave < maxWave) 
         {
-            waveCounter.text = "Wave: " + currentWave.ToString();
+            waveCounter.text = "Wave:    " + currentWave.ToString() + " of " + maxWave.ToString();
         }
         else if(currentWave == maxWave)
         {
-            waveCounter.text = "Wave: " + maxWave.ToString();
+            waveCounter.text = "Wave: " + maxWave.ToString() + "of" + maxWave.ToString();
         }
         waveCountText.text = "Waves Survived: " + (currentWave - 1).ToString();
     }

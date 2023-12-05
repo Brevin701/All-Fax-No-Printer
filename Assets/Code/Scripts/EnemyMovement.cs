@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour
@@ -44,16 +45,38 @@ public class EnemyMovement : MonoBehaviour
                 target = LevelManager.main.path[pathIndex];
             }
         }
-        
-        if (pathIndex > 5)
+        if (SceneManager.GetActiveScene().name == "Level 1")
         {
-            Debug.Log("X-value increased, flipping enemy!");
-            transform.localScale = new Vector2(.1f, .1f);
+            if (pathIndex > 5)
+            {
+                transform.localScale = new Vector2(.1f, .1f);
+            }
+            else if (pathIndex <= 5)
+            {
+                transform.localScale = new Vector2(-.1f, .1f);
+            }
         }
-        else if (pathIndex <= 5)
+        if (SceneManager.GetActiveScene().name == "Level 2")
         {
-            Debug.Log("X-value decreased, flipping enemy!");
-            transform.localScale = new Vector2(-.1f, .1f);
+            if (pathIndex > 5)
+            {
+                transform.localScale = new Vector2(.1f, .1f);
+            }
+            else if (pathIndex <= 5)
+            {
+                transform.localScale = new Vector2(-.1f, .1f);
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            if (pathIndex == 2 || pathIndex == 10)
+            {
+                transform.localScale = new Vector2(.1f, .1f);
+            }
+            else if (pathIndex == 1 || pathIndex == 8)
+            {
+                transform.localScale = new Vector2(-.1f, .1f);
+            }
         }
     }
     private void FixedUpdate()
